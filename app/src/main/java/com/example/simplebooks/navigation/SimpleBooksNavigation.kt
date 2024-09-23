@@ -15,9 +15,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.simplebooks.screens.FavoriteScreen
-import com.example.simplebooks.screens.HomeScreen
-import com.example.simplebooks.screens.SettingsScreen
+import com.example.simplebooks.presentation.screens.favorite.FavoriteScreen
+import com.example.simplebooks.presentation.screens.home.HomeScreen
+import com.example.simplebooks.presentation.screens.settings.SettingsScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
