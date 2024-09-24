@@ -44,7 +44,8 @@ fun SearchScreen() {
             colors = OutlinedTextFieldDefaults.colors(
                 cursorColor = Color.Green,
             ),
-            shape = RoundedCornerShape(10.dp)
+            shape = RoundedCornerShape(10.dp),
+            singleLine = true
         )
 
        // Spacer(modifier = Modifier.weight(1f))
@@ -54,14 +55,14 @@ fun SearchScreen() {
         Box(
             modifier = Modifier
                 .background(
-                    color = Color.DarkGray,
+                    color = Color.White,
                     shape = CircleShape
                 ),
             contentAlignment = Alignment.Center,
         ){
             Icon(painter = painterResource(id = R.drawable.search),
                 contentDescription = "Search Icon",
-                tint = Color.Red,
+                tint = Color.Black,
                 modifier = Modifier.size(40.dp)
                 )
         }

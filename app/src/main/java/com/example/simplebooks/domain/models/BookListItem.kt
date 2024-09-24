@@ -1,5 +1,5 @@
-package com.example.simplebooks.domain
-data class BookList(
+package com.example.simplebooks.domain.models
+data class BookListItem(
     val available: Boolean,
     val id: Int,
     val name: String,

@@ -51,7 +51,7 @@ fun ProfileHeader() {
         Box(
                 modifier = Modifier
                     .background(
-                        color = Color.DarkGray,
+                        color = Color.White,
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center
@@ -61,7 +61,7 @@ fun ProfileHeader() {
                     Icon(
                         painterResource(id = R.drawable.book),
                         contentDescription = "Notifications Icon",
-                        tint = Color.Red,
+                        tint = Color.Black,
                         modifier = Modifier.size(40.dp)
                     )
                 }

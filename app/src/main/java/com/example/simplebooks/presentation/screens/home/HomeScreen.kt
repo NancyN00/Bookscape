@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.simplebooks.presentation.components.ProfileHeader
-import com.example.simplebooks.presentation.screens.home.bookslist.BookListScreen
+import com.example.simplebooks.presentation.screens.home.bookslist.BooksListItemScreen
 import com.example.simplebooks.presentation.screens.home.search.SearchScreen
 
 @Composable
@@ -40,7 +40,7 @@ fun HomeScreen(){
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        BookListScreen()
+        BooksListItemScreen()
     }
 
 

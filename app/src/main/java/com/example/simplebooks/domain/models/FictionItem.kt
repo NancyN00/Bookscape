@@ -1,4 +1,4 @@
-package com.example.simplebooks.domain
+package com.example.simplebooks.domain.models
 data class FictionItem(
     val available: Boolean,
     val id: Int,
