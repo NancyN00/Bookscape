@@ -1,13 +1,14 @@
 package com.example.simplebooks.presentation.screens.home.bookslist
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.simplebooks.domain.repository.BookListRepository
 import com.example.simplebooks.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onEmpty
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,11 +46,7 @@ class BooksListViewModel @Inject constructor(
 
                 }
             }
-
-
-
-
-        }
+        }.launchIn(viewModelScope)
 
     }
 

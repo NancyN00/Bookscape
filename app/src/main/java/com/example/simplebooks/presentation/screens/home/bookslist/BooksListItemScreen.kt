@@ -1,69 +1,73 @@
 package com.example.simplebooks.presentation.screens.home.bookslist
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
+private const val TAG = "AppLogger"
 
 @Composable
 fun BooksListItemScreen(
     booksListViewModel: BooksListViewModel = hiltViewModel(),
 ) {
 
+    Log.d(TAG, "my Message")
     val bookList by booksListViewModel.booksListState.collectAsStateWithLifecycle()
 
-//    Card(
-//        onClick = {},
-//        modifier = Modifier
-//            .size(width = 160.dp, height = 80.dp).padding(start = 10.dp, top = 5.dp, end = 10.dp),
-//      //  colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-//        elevation = CardDefaults.cardElevation(5.dp)
-//    )
-    Box(
-       // modifier = Modifier.fillMaxSize(),
-        //contentAlignment = Alignment.Center
+    LazyRow(
+        modifier = Modifier,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-
-        if (bookList.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier,
-                color = MaterialTheme.colorScheme.onError
-            )
+        item {
+            if (bookList.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier,
+                    color = MaterialTheme.colorScheme.onError
+                )
+            }
         }
+        item {
+            if (bookList.message.isNotEmpty()) {
+                Text(
+                    text = bookList.message,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
 
-        if (bookList.message.isNotEmpty()) {
-            Text(
-                text = bookList.message,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-
+            }
         }
-
-        //        LazyRow(
-//            modifier = Modifier,
-//            horizontalArrangement = Arrangement.SpaceBetween,
-//            verticalAlignment = Alignment.CenterVertically
-//        ) {
-
-        LazyColumn(modifier = Modifier.fillMaxSize()){
-            items(bookList.booksList) { books ->
-
+        items(bookList.booksList) { books ->
+            Card(
+                onClick = {},
+                modifier = Modifier
+                    .size(width = 160.dp, height = 80.dp)
+                    .background(color = Color.White)
+                    .padding(start = 10.dp, top = 5.dp, end = 10.dp),
+                elevation = CardDefaults.cardElevation(5.dp))
+            {
                 BooksListItemLayout(
                     booksItem = books,
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-                    )
+                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
+                )
+            }
             }
         }
 
     }
-}
