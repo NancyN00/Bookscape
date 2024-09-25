@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.simplebooks.presentation.screens.home.ItemLayout.BooksListItemLayout
 
 private const val TAG = "AppLogger"
 
@@ -40,7 +41,7 @@ fun BooksListItemScreen(
             if (bookList.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier,
-                    color = MaterialTheme.colorScheme.onError
+                    //color = MaterialTheme.colorScheme.onError
                 )
             }
         }
@@ -58,9 +59,11 @@ fun BooksListItemScreen(
                 onClick = {},
                 modifier = Modifier
                     .size(width = 160.dp, height = 80.dp)
-                    .background(color = Color.White)
                     .padding(start = 10.dp, top = 5.dp, end = 10.dp),
-                elevation = CardDefaults.cardElevation(5.dp))
+                elevation = CardDefaults.cardElevation(5.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White)
+                )
+
             {
                 BooksListItemLayout(
                     booksItem = books,

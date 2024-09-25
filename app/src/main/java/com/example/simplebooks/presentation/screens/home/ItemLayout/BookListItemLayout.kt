@@ -1,4 +1,4 @@
-package com.example.simplebooks.presentation.screens.home.bookslist
+package com.example.simplebooks.presentation.screens.home.ItemLayout
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

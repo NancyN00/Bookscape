@@ -6,6 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface BookListRepository {
 
-    fun getCharacterList(): Flow<Resource<List<BookListItem>>>
+    fun getBooksList(): Flow<Resource<List<BookListItem>>>
+
+    fun getFictionBooks() : Flow<Resource<List<BookListItem>>>
+
+    fun getNonFictionBooks() : Flow<Resource<List<BookListItem>>>
 
 }

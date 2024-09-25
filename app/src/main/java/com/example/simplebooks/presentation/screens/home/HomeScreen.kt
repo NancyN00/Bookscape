@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.simplebooks.presentation.components.ProfileHeader
 import com.example.simplebooks.presentation.screens.home.bookslist.BooksListItemScreen
+import com.example.simplebooks.presentation.screens.home.bookslist.FictionBookListItemScreen
+import com.example.simplebooks.presentation.screens.home.bookslist.NonFictionBookListItemScreen
 import com.example.simplebooks.presentation.screens.home.search.SearchScreen
 
 @Composable
@@ -41,6 +43,14 @@ fun HomeScreen(){
         Spacer(modifier = Modifier.height(20.dp))
 
         BooksListItemScreen()
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        FictionBookListItemScreen()
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        NonFictionBookListItemScreen()
     }
 
 
