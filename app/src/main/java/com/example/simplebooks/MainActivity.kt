@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.simplebooks.navigation.SimpleBooksNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,11 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-//        installSplashScreen().apply {
-//            setKeepOnScreenCondition {
-//                viewModel.booksListState.value.isLoading
-//            }
-//        }
+        installSplashScreen()
+
 
         setContent {
             SimpleBooksNavigation()

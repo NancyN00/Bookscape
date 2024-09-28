@@ -1,6 +1,7 @@
 package com.example.simplebooks.data.repository
 
 import com.example.simplebooks.data.remote.BookListApi
+import com.example.simplebooks.domain.models.BookDetailsItem
 import com.example.simplebooks.domain.models.BookListItem
 import com.example.simplebooks.domain.repository.BookListRepository
 import com.example.simplebooks.util.Resource
@@ -53,4 +54,23 @@ class BookListRepositoryImpl @Inject constructor(
             emit(Resource.Error("Check your internet connection", data = null))
         }
     }
+
+    override fun getBookDetail(bookId: Int): Flow<Resource<List<BookDetailsItem>>> =
+        flow {
+            try {
+//                emit(Resource.Loading(data = null))
+//                emit(Resource.Success(data = api.getBookDetails(bookId)))
+                /** Fetch book details from API **/
+                emit(Resource.Loading())
+                val bookDetail = api.getBookDetails(bookId)
+                emit(Resource.Success(bookDetail))
+            } catch (e: HttpException) {
+                emit(Resource.Error(e.localizedMessage ?: "An error has occurred", data = null))
+
+            } catch (e: IOException) {
+                emit(Resource.Error("check your internet connection", data = null))
+
+            }
+
+        }
 }

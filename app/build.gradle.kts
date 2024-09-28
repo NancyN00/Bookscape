@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("kapt")
     alias(libs.plugins.google.dagger.hilt)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -99,6 +101,7 @@ dependencies {
 
     implementation(libs.androidx.compose.material3)
 
-
+    //serialization
+    implementation(libs.kotlinx.serialization.json)
 
 }
