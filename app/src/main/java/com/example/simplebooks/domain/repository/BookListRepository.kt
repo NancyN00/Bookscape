@@ -13,6 +13,6 @@ interface BookListRepository {
 
     fun getNonFictionBooks() : Flow<Resource<List<BookListItem>>>
 
-    fun getBookDetail(bookId: Int) : Flow<Resource<List<BookDetailsItem>>>
+    fun getBookDetail(bookId: Int) : Flow<Resource<BookDetailsItem>>
 
 }

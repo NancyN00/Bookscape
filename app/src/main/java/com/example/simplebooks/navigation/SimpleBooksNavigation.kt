@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.simplebooks.presentation.screens.bookdetails.BookDetailsScreen
 import com.example.simplebooks.presentation.screens.favorite.FavoriteScreen
 import com.example.simplebooks.presentation.screens.home.HomeScreen
 import com.example.simplebooks.presentation.screens.settings.SettingsScreen
@@ -63,9 +64,17 @@ fun SimpleBooksNavigation() {
             startDestination = Screens.HomeScreen.name
         ){
             composable(route = Screens.HomeScreen.name){
-                HomeScreen()
+                HomeScreen(navController = navController)
 
             }
+
+            // Route for the Book Details screen with a dynamic bookId
+            composable(route = "${Screens.BookDetailsScreen.name}/{bookId}") { backStackEntry ->
+                val bookId = backStackEntry.arguments?.getString("bookId")?.toInt() ?: 0
+                BookDetailsScreen(bookId = bookId, navController = navController)
+
+            }
+
             composable(route = Screens.FavoriteScreen.name){
                 FavoriteScreen()
 

@@ -16,6 +16,6 @@ interface BookListApi {
     @GET("/books/{bookId}")
     suspend fun getBookDetails(
         @Path("bookId") bookId : Int
-    ) : List<BookDetailsItem>
+    ) : BookDetailsItem
 
 }

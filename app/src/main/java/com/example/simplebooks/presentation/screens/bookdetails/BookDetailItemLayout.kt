@@ -1,6 +1,7 @@
 package com.example.simplebooks.presentation.screens.bookdetails
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,18 +36,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.simplebooks.domain.models.BookDetailsItem
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookDetailItemLayout(
-    bookDetItem: BookDetailsItem
+    bookDetItem: BookDetailsItem,
+    navController: NavController
 ) {
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -54,143 +58,119 @@ fun BookDetailItemLayout(
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
-                    ) { Text("Book Details") }
+                    ) {
+                        Text("Book Details")
+                    }
+
                 },
                 navigationIcon = {
-                    IconButton(onClick = {})
-                    {
-                        Icon(Icons.Default.ArrowBack, contentDescription = null)
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 }
             )
         }
-    )
-    {
+    ) { innerPadding ->
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(innerPadding)
         ) {
             Column(
-                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .padding(bottom = 80.dp)
-                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Box(modifier = Modifier) {
-                    Row(
-                        modifier = Modifier.padding(2.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-
-                        Text(
-                            text = bookDetItem.author,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                        )
-
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        Text(
-                            text = bookDetItem.name,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            maxLines = 2
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                color = MaterialTheme.colorScheme.secondaryContainer,
-                                shape = RoundedCornerShape(4.dp)
-                            )
-
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.padding(8.dp)
-                        ) {
-                            Column(
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(text = "Type")
-                                Text(text = bookDetItem.type)
-
-                            }
-
-                            Spacer(modifier = Modifier.weight(1f))
-
-                            Column(
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(text = "Price")
-                                Text(text = "\$${bookDetItem.price}")
-                            }
-
-                            Spacer(modifier = Modifier.weight(1f))
-
-                            Box(contentAlignment = Alignment.Center) {
-                                IconButton(
-                                    onClick = {
-
-                                    }
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Outlined.FavoriteBorder,
-                                        contentDescription = null
-                                    )
-                                }
-                            }
-
-
-                        }
-
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    HorizontalDivider()
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(text = "Current-Stock")
-                        Text(text = "${bookDetItem.currentStock}")
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    HorizontalDivider()
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    AssistChip(
-                        onClick = {},
-                        label = {
-                            Text(
-                                text =
-                                if (bookDetItem.available) "In Stock" else "Out of Stock"
-                            )
-                        },
-                        colors = AssistChipDefaults.assistChipColors()
+                    Text(
+                        text = bookDetItem.author,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center
                     )
 
+                Spacer(modifier = Modifier.height(4.dp))
+
+                    Text(
+                        text = bookDetItem.name,
+                        fontWeight = FontWeight.Bold,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 25.sp,
+                        textAlign = TextAlign.Center
+                    )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                /** Book Details Container **/
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = MaterialTheme.colorScheme.secondaryContainer,
+                            shape = RoundedCornerShape(4.dp)
+                        )
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.padding(8.dp)
+                    ) {
+                        /** Book Type **/
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(text = "Type")
+                            Text(text = bookDetItem.type)
+                        }
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        /** Book Price **/
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(text = "Price")
+                            Text(text = "\$${bookDetItem.price}")
+                        }
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        IconButton(onClick = { /*onclick functionality*/ }) {
+                            Icon(
+                                imageVector = Icons.Outlined.FavoriteBorder,
+                                contentDescription = "Favorite"
+                            )
+                        }
+                    }
                 }
 
+                Spacer(modifier = Modifier.height(5.dp))
+
+                /** Current Stock **/
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Log.d("API Response", "Current Stock: ${bookDetItem.currentStock}")
+                    Text(text = "Current Stock")
+                    Text(text = "${bookDetItem.currentStock}")
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                /** Stock Status Chip **/
+                AssistChip(
+                    onClick = {},
+                    label = {
+                        Text(
+                            text = if (bookDetItem.available) "In Stock" else "Out of Stock"
+                        )
+                    },
+                   colors = AssistChipDefaults.assistChipColors(
+                       containerColor = if (bookDetItem.available) Color.Green else Color.Red,
+                       labelColor = Color.White
+                   )
+                )
             }
-
         }
-
     }
 }
-
-

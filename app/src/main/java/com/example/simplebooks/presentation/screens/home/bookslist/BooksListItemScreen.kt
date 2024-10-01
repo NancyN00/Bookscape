@@ -20,6 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import com.example.simplebooks.navigation.Screens
 import com.example.simplebooks.presentation.screens.home.ItemLayout.BooksListItemLayout
 
 private const val TAG = "AppLogger"
@@ -27,6 +29,7 @@ private const val TAG = "AppLogger"
 @Composable
 fun BooksListItemScreen(
     booksListViewModel: BooksListViewModel = hiltViewModel(),
+    navController: NavController
 ) {
 
     Log.d(TAG, "my Message")
@@ -56,7 +59,9 @@ fun BooksListItemScreen(
         }
         items(bookList.booksList) { books ->
             Card(
-                onClick = {},
+                onClick = {
+                          navController.navigate("${Screens.BookDetailsScreen.name}/${books.id}")
+                },
                 modifier = Modifier
                     .size(width = 160.dp, height = 80.dp)
                     .padding(start = 10.dp, top = 5.dp, end = 10.dp),

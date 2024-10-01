@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.simplebooks.presentation.components.ProfileHeader
 import com.example.simplebooks.presentation.screens.home.bookslist.BooksListItemScreen
 import com.example.simplebooks.presentation.screens.home.bookslist.FictionBookListItemScreen
@@ -21,7 +23,7 @@ import com.example.simplebooks.presentation.screens.home.bookslist.NonFictionBoo
 import com.example.simplebooks.presentation.screens.home.search.SearchScreen
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController: NavHostController ){
 
     Column(modifier = Modifier.fillMaxSize()
         .windowInsetsPadding(WindowInsets.systemBars)
@@ -42,7 +44,7 @@ fun HomeScreen(){
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        BooksListItemScreen()
+        BooksListItemScreen(navController = navController)
 
         Spacer(modifier = Modifier.height(20.dp))
 
