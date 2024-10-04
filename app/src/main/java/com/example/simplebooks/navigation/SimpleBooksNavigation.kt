@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.simplebooks.presentation.screens.bookdetails.BookDetailsScreen
 import com.example.simplebooks.presentation.screens.favorite.FavoriteScreen
 import com.example.simplebooks.presentation.screens.home.HomeScreen
+import com.example.simplebooks.presentation.screens.settings.AccountScreen
 import com.example.simplebooks.presentation.screens.settings.SettingsScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -80,8 +81,12 @@ fun SimpleBooksNavigation() {
 
             }
             composable(route = Screens.SettingsScreen.name){
-                SettingsScreen()
+                SettingsScreen(navController = navController)
 
+            }
+
+            composable(route = Screens.AccountScreen.name){
+                AccountScreen()
             }
         }
 

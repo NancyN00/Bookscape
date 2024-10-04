@@ -4,5 +4,6 @@ enum class Screens {
     HomeScreen(),
     FavoriteScreen(),
     SettingsScreen(),
-    BookDetailsScreen()
+    BookDetailsScreen(),
+    AccountScreen()
 }

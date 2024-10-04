@@ -1,4 +1,4 @@
-package com.example.simplebooks.presentation.screens.favorite
+package com.example.simplebooks.presentation.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -14,20 +14,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FavoriteScreen() {
-
-    Column(
-        modifier = Modifier.fillMaxSize()
-            .windowInsetsPadding(WindowInsets.systemBars)
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
-    ) {
+fun AccountScreen(){
+    Column(modifier = Modifier.fillMaxSize()
+        .windowInsetsPadding(WindowInsets.systemBars)
+        .padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
 
         Text(
-            text = "Favorite Books",
-            fontWeight = FontWeight.SemiBold,
+            text = "Account",
+       //     fontWeight = FontWeight.SemiBold,
             fontSize = 25.sp
         )
     }
-
-
 }
