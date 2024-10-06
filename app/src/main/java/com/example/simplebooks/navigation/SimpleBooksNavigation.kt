@@ -86,7 +86,7 @@ fun SimpleBooksNavigation() {
             }
 
             composable(route = Screens.AccountScreen.name){
-                AccountScreen()
+                AccountScreen(navController = navController)
             }
         }
 

@@ -2,6 +2,7 @@ package com.example.simplebooks.presentation.screens.settings
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,16 +23,19 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.ShieldMoon
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,6 +47,15 @@ import com.example.simplebooks.navigation.Screens
 
 @Composable
 fun SettingsScreen(navController: NavController) {
+
+
+    var isChecked by remember { mutableStateOf(false) }
+    val painter =
+        if (isChecked) {
+            painterResource(id = R.drawable.toggle_on)
+        } else {
+            painterResource(id = R.drawable.toggle_off)
+        }
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -85,10 +98,14 @@ fun SettingsScreen(navController: NavController) {
             ) {
                 Text(
                     text = "Kerry Ancy",
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp
                 )
 
-                Text(text = "Personal Info")
+                Text(
+                    text = "Personal Info",
+                    fontSize = 15.sp
+                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
@@ -102,9 +119,11 @@ fun SettingsScreen(navController: NavController) {
                 IconButton(onClick = {
                     navController.navigate(Screens.AccountScreen.name)
                 }) {
-                    Icon(Icons.Default.ArrowForward,
+                    Icon(
+                        Icons.Default.ArrowForward,
                         contentDescription = "Arrow Forward",
-                        modifier = Modifier.size(50.dp))
+                        modifier = Modifier.size(50.dp)
+                    )
                 }
             }
 
@@ -131,7 +150,10 @@ fun SettingsScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(text = "Language")
+            Text(
+                text = "Language",
+                fontSize = 15.sp
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -142,9 +164,11 @@ fun SettingsScreen(navController: NavController) {
                     .padding(8.dp)
             ) {
                 IconButton(onClick = {}) {
-                    Icon(Icons.Default.ArrowForward,
+                    Icon(
+                        Icons.Default.ArrowForward,
                         contentDescription = "Arrow Forward",
-                        modifier = Modifier.size(50.dp))
+                        modifier = Modifier.size(50.dp)
+                    )
                 }
             }
 
@@ -163,7 +187,10 @@ fun SettingsScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(text = "Notification")
+            Text(
+                text = "Notification",
+                fontSize = 15.sp
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -174,9 +201,11 @@ fun SettingsScreen(navController: NavController) {
                     .padding(8.dp)
             ) {
                 IconButton(onClick = {}) {
-                    Icon(Icons.Default.ArrowForward,
+                    Icon(
+                        Icons.Default.ArrowForward,
                         contentDescription = "Arrow Forward",
-                        modifier = Modifier.size(50.dp))
+                        modifier = Modifier.size(50.dp)
+                    )
                 }
             }
 
@@ -195,7 +224,10 @@ fun SettingsScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(text = "Request")
+            Text(
+                text = "Request",
+                fontSize = 15.sp
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -206,9 +238,11 @@ fun SettingsScreen(navController: NavController) {
                     .padding(8.dp)
             ) {
                 IconButton(onClick = {}) {
-                    Icon(Icons.Default.ArrowForward,
+                    Icon(
+                        Icons.Default.ArrowForward,
                         contentDescription = "Arrow Forward",
-                        modifier = Modifier.size(50.dp))
+                        modifier = Modifier.size(50.dp)
+                    )
                 }
             }
 
@@ -227,25 +261,34 @@ fun SettingsScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(text = "Dark Mode")
+            Text(
+                text = "Dark Mode",
+                fontSize = 15.sp
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Box(
-                modifier = Modifier
-                    .size(40.dp)
+                modifier =
+                Modifier.size(40.dp)
                     .background(Color.LightGray, RoundedCornerShape(10.dp))
                     .padding(8.dp)
+                    .clickable { isChecked = !isChecked }
             ) {
-                IconButton(onClick = {}) {
-                    Icon(Icons.Default.ArrowForward,
-                        contentDescription = "Arrow Forward",
-                        modifier = Modifier.size(50.dp))
-                }
-            }
+                Image(painter = painter,
+                    contentDescription = "Dark/Light Mode",
+                    modifier = Modifier.size(50.dp),
+                    colorFilter = if (isChecked) {
+                        ColorFilter.tint(Color.Black)
+                    } else {
+                        ColorFilter.tint(Color.Gray)
+                    }
 
+                    )
+            }
         }
 
     }
 
 }
+
