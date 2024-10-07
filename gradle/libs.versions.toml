@@ -16,6 +16,10 @@ retrofit = "2.9.0"
 mockwebserver = "4.9.1"
 core_testing = "2.2.0"
 mockk = "1.10.5"
+roomCompiler = "2.6.1"
+roomPaging = "2.6.1"
+roomKtx = "2.6.1"
+roomRuntime = "2.6.1"
 truth = "1.1.2"
 mockito_kotlin = "3.2.0"
 mockito_inline = "3.11.2"
@@ -34,6 +38,10 @@ hiltNavigationCompose = "1.0.0"
 [libraries]
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-rc01" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
