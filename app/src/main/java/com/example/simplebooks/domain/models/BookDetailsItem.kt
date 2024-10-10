@@ -1,10 +1,8 @@
 package com.example.simplebooks.domain.models
 
-import androidx.room.Entity
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Entity()
 @Serializable
 data class BookDetailsItem(
     @SerialName("author")
@@ -22,5 +20,21 @@ data class BookDetailsItem(
     @SerialName("price")
     val price: Double,
     @SerialName("type")
-    val type: String
-)
+    val type: String,
+    val isFavorite: Boolean = false
+) {
+    /** convert BookDetailsItem to FavoriteBookEntity **/
+    fun toFavoriteBookEntity(): FavoriteBookEntity {
+        return FavoriteBookEntity(
+            id = this.id,
+            name = this.name,
+            author = this.author,
+            type = this.type,
+            isbn = this.isbn,
+            price = this.price,
+            currentStock = this.currentStock,
+            available = this.available
+        )
+    }
+
+}

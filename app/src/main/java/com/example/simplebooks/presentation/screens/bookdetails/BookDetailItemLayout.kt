@@ -49,7 +49,9 @@ import com.example.simplebooks.domain.models.BookDetailsItem
 @Composable
 fun BookDetailItemLayout(
     bookDetItem: BookDetailsItem,
-    navController: NavController
+    navController: NavController,
+    onFavoriteClick : () -> Unit,
+    isFavorite: Boolean
 ) {
     Scaffold(
         topBar = {
@@ -135,10 +137,14 @@ fun BookDetailItemLayout(
 
                         Spacer(modifier = Modifier.weight(1f))
 
-                        IconButton(onClick = { /*onclick functionality*/ }) {
+                        IconButton(onClick = {
+                            onFavoriteClick()
+                        }) {
+                            val favorite = bookDetItem.isFavorite
                             Icon(
-                                imageVector = Icons.Outlined.FavoriteBorder,
-                                contentDescription = "Favorite"
+                                imageVector = if (favorite)
+                                    Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
+                                contentDescription = if (favorite) "Remove from Favorites" else "Add to Favorites"
                             )
                         }
                     }

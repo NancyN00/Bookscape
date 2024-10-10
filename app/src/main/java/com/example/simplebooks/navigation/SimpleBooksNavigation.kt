@@ -77,7 +77,7 @@ fun SimpleBooksNavigation() {
             }
 
             composable(route = Screens.FavoriteScreen.name){
-                FavoriteScreen()
+                FavoriteScreen(navController = navController)
 
             }
             composable(route = Screens.SettingsScreen.name){

@@ -14,12 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.example.simplebooks.domain.models.FavoriteBookEntity
+import com.example.simplebooks.presentation.screens.favorite.FavoriteBooksViewModel
 
 @Composable
 fun BookDetailsScreen(
     bookId: Int?,
     bookDetailViewModel: BookDetailViewModel = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
 ) {
 
     //  Log.d("BookDetailsScreen", "bookDetListState: $bookDetListState")
@@ -28,8 +30,12 @@ fun BookDetailsScreen(
     LaunchedEffect(bookId) {
         if (bookId != null) {
             bookDetailViewModel.getBookDetails(bookId)
+            bookDetailViewModel.checkIfFavorite(bookId) // Check if the book is a favorite
         }
     }
+
+    // Collect the isFavorite state from the ViewModel
+    val isFavorite by bookDetailViewModel.isFavorite.collectAsStateWithLifecycle()
 
     val bookDetListState by bookDetailViewModel.bookDetState.collectAsStateWithLifecycle()
 
@@ -57,7 +63,24 @@ fun BookDetailsScreen(
             }
             /** check if bookDetListState.bookDetails is null **/
             bookDetListState.booksList?.let { bookDetail ->
-                BookDetailItemLayout(bookDetItem = bookDetail, navController = navController)
+                BookDetailItemLayout(
+                    bookDetItem = bookDetail,
+                    navController = navController,
+                    onFavoriteClick = {
+                        /**the add/remove from favorites onclick functionality **/
+
+                        bookDetailViewModel.toggleFavorite(bookDetail)
+
+//                        favoriteBooksViewModel.toggleFavorite(
+//                            FavoriteBookEntity.fromBookDetail(
+//                                bookDetail
+//                            )
+//                        )
+
+                    },
+                    isFavorite = isFavorite // Pass the isFavorite state to update the UI
+
+                )
 
             }
         }

@@ -1,4 +1,4 @@
-package com.example.simplebooks.di
+package com.example.simplebooks.di.remote
 
 import com.example.simplebooks.data.remote.BookListApi
 import com.example.simplebooks.data.repository.BookListRepositoryImpl
