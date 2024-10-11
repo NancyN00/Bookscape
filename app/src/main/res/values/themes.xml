@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.MySplashScreen" parent= "Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/green</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/bookspacesplash</item>
+        <item name="postSplashScreenTheme">@style/Theme.SimpleBooks</item>
+    </style>
     <style name="Theme.SimpleBooks" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
