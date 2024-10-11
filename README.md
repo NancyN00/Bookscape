@@ -10,15 +10,11 @@ The app uses these technologies;
 * Hilt - For dependency injection.
 * Splash screen Api - For creating a splash screen on app starting.
 * Jetpack components;
-  
-        - navigation component - Navigating through different screens in the app.
-  
-        - Room - For local storage of the app.
-  
-        - Coroutines - Used to make asynchronous calls.
-  
-        - Flow - Used to get data from network requests asynchronously. 
-  
+     - navigation component - Navigating through different screens in the app.  
+     - Room - For local storage of the app.  
+     - Coroutines - Used to make asynchronous calls.  
+     - Flow - Used to get data from network requests asynchronously.  
+       
   ## Screenshots
  <p align="center">
 <img src="https://github.com/user-attachments/assets/6731efa7-47ec-4edf-95b8-cef97cd5a6f5" width=20% height=30% >
