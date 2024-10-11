@@ -17,26 +17,10 @@ The app uses these technologies;
   
   ## Screenshots
  <p align="center">
-         ![books](https://github.com/user-attachments/assets/6731efa7-47ec-4edf-95b8-cef97cd5a6f5)
-       
-![favoritebooks](https://github.com/user-attachments/assets/e97d0bb9-8b6e-4e91-85e1-a4eb6b75b42f)
-  ![settings](https://github.com/user-attachments/assets/4107cd2e-40f4-429b-bf97-b600ea4e6cff)
-  ![account](https://github.com/user-attachments/assets/dc69f39a-faec-48df-9f22-63168d28ec51)
-  ![nofavbooks](https://github.com/user-attachments/assets/4848faaf-56ab-4410-93fb-3febd9d81c4d)
-![zerointernet](https://github.com/user-attachments/assets/eeb1c5e1-6034-4837-861f-27ca20a01b8e)
-
-
-
-
-
-<img src="https://github.com/user-attachments/assets/cb6db619-d0c2-4c14-b0b2-a490e13925dc" width=20% height=30% >
-<img src="https://github.com/user-attachments/assets/79d58223-9dd6-4fd7-b643-081716fb38c0" width=20% height=30% >
-<img src="(https://github.com/user-attachments/assets/39774f0c-0ebf-4668-b1db-fa925a587dab" width=20% height=30% >
-<img src="https://github.com/user-attachments/assets/daeb84e9-547c-4cca-953a-eec47534f519)" width=20% height=30% >
-<img src="https://github.com/user-attachments/assets/7feab53e-1a84-471a-8b26-100cfa6215ff" width=20% height=30% >
-<img src="https://github.com/user-attachments/assets/e40964ba-d8b9-4ad8-817d-d32278ccbd75" width=20% height=30% >
-<img src="https://github.com/user-attachments/assets/7746c2ae-1515-4824-8a34-656977768eb3)" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/6731efa7-47ec-4edf-95b8-cef97cd5a6f5" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/e97d0bb9-8b6e-4e91-85e1-a4eb6b75b42f" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/4107cd2e-40f4-429b-bf97-b600ea4e6cff" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/dc69f39a-faec-48df-9f22-63168d28ec51" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/4848faaf-56ab-4410-93fb-3febd9d81c4d" width=20% height=30% >
+<img src="https://github.com/user-attachments/assets/eeb1c5e1-6034-4837-861f-27ca20a01b8e" width=20% height=30% >
 </p>
-
-
-  
