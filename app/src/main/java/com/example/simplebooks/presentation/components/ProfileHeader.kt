@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -34,41 +34,44 @@ fun ProfileHeader() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
-            painter = painterResource(id = R.drawable.avatar),
-            contentDescription = "Person Avatar Image",
+            painter = painterResource(id = R.drawable.bookspaceicon),
+            contentDescription = "My Profile Pic",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.size(40.dp).clip(RoundedCornerShape(10.dp))
+            modifier = Modifier.size(40.dp)
+                .clip(CircleShape)
+
         )
 
         Text(
             text = "Hi, Kerry",
             fontSize = 15.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(4.dp)
         )
 
         Spacer(modifier = Modifier.weight(1f))
 
         Box(
-                modifier = Modifier
-                    .background(
-                        color = Color.White,
-                        shape = CircleShape
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                IconButton(onClick = {}) {
+            modifier = Modifier
+                .background(
+                    color = Color.White,
+                    shape = CircleShape
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(onClick = {}) {
 
-                    Icon(
-                        painterResource(id = R.drawable.book),
-                        contentDescription = "Notifications Icon",
-                        tint = Color.Black,
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-
+                Icon(
+                    painterResource(id = R.drawable.book),
+                    contentDescription = "Notifications Icon",
+                    tint = Color.Black,
+                    modifier = Modifier.size(40.dp)
+                )
             }
 
         }
+
     }
+}
 
 

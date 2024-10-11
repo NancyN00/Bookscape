@@ -86,4 +86,4 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinseria"}
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinseria" }

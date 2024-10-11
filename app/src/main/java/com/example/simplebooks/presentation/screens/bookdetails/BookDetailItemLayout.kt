@@ -12,20 +12,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
-import androidx.compose.material3.ChipColors
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -36,11 +30,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.simplebooks.domain.models.BookDetailsItem
 
@@ -50,7 +46,8 @@ import com.example.simplebooks.domain.models.BookDetailsItem
 fun BookDetailItemLayout(
     bookDetItem: BookDetailsItem,
     navController: NavController,
-    onFavoriteClick : () -> Unit,
+    onFavoriteClick: () -> Unit,
+    bookDetailViewModel: BookDetailViewModel = hiltViewModel(),
     isFavorite: Boolean
 ) {
     Scaffold(
@@ -73,6 +70,9 @@ fun BookDetailItemLayout(
             )
         }
     ) { innerPadding ->
+
+        val context = LocalContext.current
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -84,22 +84,22 @@ fun BookDetailItemLayout(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                    Text(
-                        text = bookDetItem.author,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        textAlign = TextAlign.Center
-                    )
+                Text(
+                    text = bookDetItem.author,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                    Text(
-                        text = bookDetItem.name,
-                        fontWeight = FontWeight.Bold,
-                        fontStyle = FontStyle.Italic,
-                        fontSize = 25.sp,
-                        textAlign = TextAlign.Center
-                    )
+                Text(
+                    text = bookDetItem.name,
+                    fontWeight = FontWeight.Bold,
+                    fontStyle = FontStyle.Italic,
+                    fontSize = 25.sp,
+                    textAlign = TextAlign.Center
+                )
 
                 Spacer(modifier = Modifier.height(4.dp))
 
@@ -138,13 +138,23 @@ fun BookDetailItemLayout(
                         Spacer(modifier = Modifier.weight(1f))
 
                         IconButton(onClick = {
-                            onFavoriteClick()
+
+                            Log.d(
+                                "BookDetailsScreen",
+                                "Toggle favorite clicked for book: ${bookDetItem.name}, isFavorite: $isFavorite"
+                            )
+
+                            bookDetailViewModel.toggleFavorite(bookDetItem, context)
                         }) {
                             val favorite = bookDetItem.isFavorite
+
+                            /**Icon color not working to show diff between in fav list or not... fix soon. **/
+                            val tintColor = if (favorite) Color.Red else Color.Gray
                             Icon(
                                 imageVector = if (favorite)
-                                    Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
-                                contentDescription = if (favorite) "Remove from Favorites" else "Add to Favorites"
+                                    Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                                contentDescription = if (favorite) "Remove from Favorites" else "Add to Favorites",
+                                tint = tintColor
                             )
                         }
                     }
@@ -171,10 +181,10 @@ fun BookDetailItemLayout(
                             text = if (bookDetItem.available) "In Stock" else "Out of Stock"
                         )
                     },
-                   colors = AssistChipDefaults.assistChipColors(
-                       containerColor = if (bookDetItem.available) Color.Green else Color.Red,
-                       labelColor = Color.White
-                   )
+                    colors = AssistChipDefaults.assistChipColors(
+                        containerColor = if (bookDetItem.available) Color.Green else Color.Red,
+                        labelColor = Color.White
+                    )
                 )
             }
         }

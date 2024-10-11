@@ -275,7 +275,8 @@ fun SettingsScreen(navController: NavController) {
                     .padding(8.dp)
                     .clickable { isChecked = !isChecked }
             ) {
-                Image(painter = painter,
+                Image(
+                    painter = painter,
                     contentDescription = "Dark/Light Mode",
                     modifier = Modifier.size(50.dp),
                     colorFilter = if (isChecked) {
@@ -284,7 +285,7 @@ fun SettingsScreen(navController: NavController) {
                         ColorFilter.tint(Color.Gray)
                     }
 
-                    )
+                )
             }
         }
 

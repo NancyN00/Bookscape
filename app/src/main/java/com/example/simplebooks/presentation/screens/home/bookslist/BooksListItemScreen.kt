@@ -1,7 +1,6 @@
 package com.example.simplebooks.presentation.screens.home.bookslist
 
 import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -60,14 +59,14 @@ fun BooksListItemScreen(
         items(bookList.booksList) { books ->
             Card(
                 onClick = {
-                          navController.navigate("${Screens.BookDetailsScreen.name}/${books.id}")
+                    navController.navigate("${Screens.BookDetailsScreen.name}/${books.id}")
                 },
                 modifier = Modifier
                     .size(width = 160.dp, height = 80.dp)
                     .padding(start = 10.dp, top = 5.dp, end = 10.dp),
                 elevation = CardDefaults.cardElevation(5.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.White)
-                )
+            )
 
             {
                 BooksListItemLayout(
@@ -75,7 +74,7 @@ fun BooksListItemScreen(
                     modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
                 )
             }
-            }
         }
-
     }
+
+}

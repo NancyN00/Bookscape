@@ -22,15 +22,16 @@ import com.example.simplebooks.presentation.screens.home.ItemLayout.FictionItemL
 @Composable
 fun FictionBookListItemScreen(
     fictionBooksListViewModel: BooksListViewModel = hiltViewModel()
-){
+) {
 
     val fictionBooksState by fictionBooksListViewModel.fictionBooksState.collectAsStateWithLifecycle()
 
-    Text(text = "Fiction",
+    Text(
+        text = "Fiction",
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
         color = Color.Green
-        )
+    )
 
     if (fictionBooksState.isLoading) {
         CircularProgressIndicator(modifier = Modifier)
@@ -38,7 +39,7 @@ fun FictionBookListItemScreen(
         Text(
             text = fictionBooksState.message,
             color = MaterialTheme.colorScheme.error,
-           // modifier = Modifier.align(Alignment.Center)
+            // modifier = Modifier.align(Alignment.Center)
         )
     } else {
         LazyVerticalGrid(

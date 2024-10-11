@@ -9,10 +9,10 @@ interface BookListRepository {
 
     fun getBooksList(): Flow<Resource<List<BookListItem>>>
 
-    fun getFictionBooks() : Flow<Resource<List<BookListItem>>>
+    fun getFictionBooks(): Flow<Resource<List<BookListItem>>>
 
-    fun getNonFictionBooks() : Flow<Resource<List<BookListItem>>>
+    fun getNonFictionBooks(): Flow<Resource<List<BookListItem>>>
 
-    fun getBookDetail(bookId: Int) : Flow<Resource<BookDetailsItem>>
+    fun getBookDetail(bookId: Int): Flow<Resource<BookDetailsItem>>
 
 }

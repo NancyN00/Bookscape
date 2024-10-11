@@ -39,7 +39,7 @@ fun BooksListItemLayout(
         Spacer(modifier = Modifier.height(5.dp))
 
         Row(
-           verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -57,7 +57,7 @@ fun BooksListItemLayout(
 
 
             Text(
-                text = if(booksItem.available) "Available" else "Not Available",
+                text = if (booksItem.available) "Available" else "Not Available",
                 fontSize = 15.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,

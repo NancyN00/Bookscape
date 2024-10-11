@@ -7,8 +7,8 @@ import com.example.simplebooks.domain.models.BookListItem
 import com.example.simplebooks.domain.repository.BookListRepository
 import com.example.simplebooks.util.Resource
 import kotlinx.coroutines.flow.Flow
-import retrofit2.HttpException
 import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 

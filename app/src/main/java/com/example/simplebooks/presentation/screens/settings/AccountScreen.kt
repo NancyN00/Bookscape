@@ -117,7 +117,7 @@ fun AccountScreen(
         Row(
             modifier = Modifier,
             verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = "Photo",
@@ -156,9 +156,11 @@ fun AccountScreen(
             modifier = Modifier.fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
                 .clickable {
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         "Uploaded",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
         )
 

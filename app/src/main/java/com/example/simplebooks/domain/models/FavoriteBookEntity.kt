@@ -14,20 +14,5 @@ data class FavoriteBookEntity(
     val price: Double,
     val currentStock: Int,
     val available: Boolean
-) {
-    companion object {
-        fun fromBookDetail(bookDetail: BookDetailsItem): FavoriteBookEntity {
-            return FavoriteBookEntity(
-                id = bookDetail.id,
-                name = bookDetail.name,
-                type = bookDetail.type,
-                price = bookDetail.price,
-                isbn = bookDetail.isbn,
-                author = bookDetail.author,
-                available = bookDetail.available,
-                currentStock = bookDetail.currentStock
-            )
-        }
-    }
-}
+)
 

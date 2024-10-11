@@ -30,7 +30,7 @@ object DatabaseModule {
     }
 
     @Provides
-  //  @Singleton
+    //  @Singleton
     fun provideFavoriteBookDao(database: FavoriteBooksDatabase): FavoriteBookDao {
         return database.favoriteBookDao()
     }

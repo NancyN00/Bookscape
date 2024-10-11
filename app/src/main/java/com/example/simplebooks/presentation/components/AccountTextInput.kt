@@ -9,10 +9,10 @@ import androidx.compose.ui.graphics.Color
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccountTextInput(
-    text : String,
+    text: String,
     onTextChange: (String) -> Unit
 
-){
+) {
 
     TextField(
         value = text,
@@ -24,6 +24,6 @@ fun AccountTextInput(
             disabledIndicatorColor = Color.Transparent, // If disabled, no underline
             focusedTextColor = Color.Black,
 
-    )
+            )
     )
 }

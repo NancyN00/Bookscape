@@ -48,7 +48,7 @@ fun SearchScreen() {
             singleLine = true
         )
 
-       // Spacer(modifier = Modifier.weight(1f))
+        // Spacer(modifier = Modifier.weight(1f))
 
         Spacer(modifier = Modifier.height(4.dp))
 
@@ -59,12 +59,13 @@ fun SearchScreen() {
                     shape = CircleShape
                 ),
             contentAlignment = Alignment.Center,
-        ){
-            Icon(painter = painterResource(id = R.drawable.search),
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.search),
                 contentDescription = "Search Icon",
                 tint = Color.Black,
                 modifier = Modifier.size(40.dp)
-                )
+            )
         }
     }
 }

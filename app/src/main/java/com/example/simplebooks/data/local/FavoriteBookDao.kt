@@ -11,8 +11,8 @@ import com.example.simplebooks.domain.models.FavoriteBookEntity
 @Dao
 interface FavoriteBookDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addToFavorites(book : FavoriteBookEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addToFavorites(book: FavoriteBookEntity)
 
     @Delete
     suspend fun removeFromFavorites(book: FavoriteBookEntity)

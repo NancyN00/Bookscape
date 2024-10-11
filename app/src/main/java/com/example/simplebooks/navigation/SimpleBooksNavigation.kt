@@ -25,9 +25,9 @@ import com.example.simplebooks.presentation.screens.settings.SettingsScreen
 @Composable
 fun SimpleBooksNavigation() {
 
-    val navController : NavHostController = rememberNavController()
+    val navController: NavHostController = rememberNavController()
 
-    Scaffold (
+    Scaffold(
         bottomBar = {
             NavigationBar {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -38,7 +38,7 @@ fun SimpleBooksNavigation() {
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any { it.route == bottomNav.route } == true,
                         onClick = {
-                            navController.navigate(bottomNav.route){
+                            navController.navigate(bottomNav.route) {
                                 popUpTo(navController.graph.findStartDestination().id)
                                 launchSingleTop = true
                             }
@@ -63,8 +63,8 @@ fun SimpleBooksNavigation() {
         NavHost(
             navController = navController,
             startDestination = Screens.HomeScreen.name
-        ){
-            composable(route = Screens.HomeScreen.name){
+        ) {
+            composable(route = Screens.HomeScreen.name) {
                 HomeScreen(navController = navController)
 
             }
@@ -76,24 +76,22 @@ fun SimpleBooksNavigation() {
 
             }
 
-            composable(route = Screens.FavoriteScreen.name){
+            composable(route = Screens.FavoriteScreen.name) {
                 FavoriteScreen(navController = navController)
 
             }
-            composable(route = Screens.SettingsScreen.name){
+            composable(route = Screens.SettingsScreen.name) {
                 SettingsScreen(navController = navController)
 
             }
 
-            composable(route = Screens.AccountScreen.name){
+            composable(route = Screens.AccountScreen.name) {
                 AccountScreen(navController = navController)
             }
         }
 
 
     }
-
-
 
 
 }

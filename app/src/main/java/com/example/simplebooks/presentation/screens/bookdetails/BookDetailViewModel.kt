@@ -1,11 +1,13 @@
 package com.example.simplebooks.presentation.screens.bookdetails
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.simplebooks.domain.models.BookDetailsItem
 import com.example.simplebooks.domain.repository.BookListRepository
 import com.example.simplebooks.domain.repository.FavoriteBookRepository
+import com.example.simplebooks.presentation.components.showToast
 import com.example.simplebooks.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BookDetailViewModel @Inject constructor(
     private val bookDetRepImpl: BookListRepository,
-    private val favBookRepository : FavoriteBookRepository
+    private val favBookRepository: FavoriteBookRepository
 ) : ViewModel() {
 
     private val _bookDetState = MutableStateFlow(BookDetailsState())
@@ -55,22 +57,44 @@ class BookDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    // Fetch if the book is in favorites
+    // check if the book is in favorites
     fun checkIfFavorite(bookId: Int) {
         viewModelScope.launch {
-            _isFavorite.value = favBookRepository.isBookInFavorites(bookId)
+            //  _isFavorite.value = favBookRepository.isBookInFavorites(bookId)
+
+            val favoriteStatus = favBookRepository.isBookInFavorites(bookId)
+            Log.d(
+                "BookDetailViewModel",
+                "checkIfFavorite() called for bookId: $bookId, favoriteStatus: $favoriteStatus"
+            )
+            _isFavorite.value = favoriteStatus
+
         }
     }
 
-    fun toggleFavorite(book: BookDetailsItem) {
+    fun toggleFavorite(book: BookDetailsItem, context: Context) {
         viewModelScope.launch {
             val isFavorite = favBookRepository.isBookInFavorites(book.id)
+
+            Log.d(
+                "BookDetailViewModel",
+                "toggleFavorite() called for book: ${book.name}, isFavorite: $isFavorite"
+            )
+
             if (isFavorite) {
+
+                showToast(context, "${book.name} removed from favorites")
+                Log.d("BookDetailViewModel", "Removing book from favorites: ${book.name}")
                 favBookRepository.removeFromFavorites(book.toFavoriteBookEntity())
             } else {
+                Log.d("BookDetailViewModel", "Adding book to favorites: ${book.name}")
+
+                showToast(context, "${book.name} added to favorites")
                 favBookRepository.addToFavorites(book.toFavoriteBookEntity())
             }
-            // Update the UI state to reflect the new favorite status
+            /** Update the UI state to reflect the new favorite status **/
+
+            Log.d("BookDetailViewModel", "New isFavorite state: ${_isFavorite.value}")
             _isFavorite.value = !isFavorite
 
         }

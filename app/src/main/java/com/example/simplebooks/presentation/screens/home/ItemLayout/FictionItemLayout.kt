@@ -25,7 +25,8 @@ fun FictionItemLayout(
         modifier = modifier.padding(4.dp),
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White)
+            containerColor = Color.White
+        )
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
 

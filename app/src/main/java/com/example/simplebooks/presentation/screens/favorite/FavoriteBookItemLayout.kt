@@ -29,7 +29,7 @@ fun FavoriteBookItemLayout(book: FavoriteBookEntity, onClick: () -> Unit) {
             .clickable { onClick() }
 
     ) {
-        Column ( horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(
                 text = book.name,

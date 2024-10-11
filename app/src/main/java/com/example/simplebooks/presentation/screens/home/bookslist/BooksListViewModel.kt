@@ -25,11 +25,11 @@ class BooksListViewModel @Inject constructor(
     private val _nonFictionBooksState = MutableStateFlow(BooksListState())
     val nonFictionBooksState = _nonFictionBooksState.asStateFlow()
 
-      init {
-          getBooksList()
-          getFictionBooks()
-          getNonFictionBooks()
-      }
+    init {
+        getBooksList()
+        getFictionBooks()
+        getNonFictionBooks()
+    }
 
     private fun getNonFictionBooks() {
         bookListRepository.getNonFictionBooks().onEach { books ->
@@ -37,11 +37,13 @@ class BooksListViewModel @Inject constructor(
                 is Resource.Loading -> {
                     _nonFictionBooksState.value = BooksListState(isLoading = true)
                 }
+
                 is Resource.Error -> {
                     _nonFictionBooksState.value = BooksListState(
                         message = books.message ?: "Something went wrong"
                     )
                 }
+
                 is Resource.Success -> {
                     _nonFictionBooksState.value = BooksListState(
                         booksList = books.data ?: emptyList()
@@ -58,11 +60,13 @@ class BooksListViewModel @Inject constructor(
                 is Resource.Loading -> {
                     _fictionBooksState.value = BooksListState(isLoading = true)
                 }
+
                 is Resource.Error -> {
                     _fictionBooksState.value = BooksListState(
                         message = books.message ?: "Something went wrong"
                     )
                 }
+
                 is Resource.Success -> {
                     _fictionBooksState.value = BooksListState(
                         booksList = books.data ?: emptyList()
@@ -76,7 +80,7 @@ class BooksListViewModel @Inject constructor(
 
     private fun getBooksList() {
         bookListRepository.getBooksList().onEach { books ->
-            when(books){
+            when (books) {
                 is Resource.Loading -> {
                     _booksListState.value = BooksListState(
                         isLoading = true
@@ -90,6 +94,7 @@ class BooksListViewModel @Inject constructor(
                     )
 
                 }
+
                 is Resource.Success -> {
                     _booksListState.value = BooksListState(
                         booksList = books.data ?: emptyList()

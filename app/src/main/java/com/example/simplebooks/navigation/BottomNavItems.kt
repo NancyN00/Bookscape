@@ -5,8 +5,6 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
-import com.example.simplebooks.R
 
 data class BottomNavItems(
     val label: String,
@@ -29,7 +27,7 @@ val listOfItems: List<BottomNavItems> = listOf(
 
     BottomNavItems(
         label = "Settings",
-        icon =  Icons.Default.Settings,
+        icon = Icons.Default.Settings,
         route = Screens.SettingsScreen.name
     )
 )

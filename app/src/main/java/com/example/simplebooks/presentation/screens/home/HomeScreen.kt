@@ -15,7 +15,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.simplebooks.presentation.components.ProfileHeader
 import com.example.simplebooks.presentation.screens.home.bookslist.BooksListItemScreen
 import com.example.simplebooks.presentation.screens.home.bookslist.FictionBookListItemScreen
@@ -23,13 +22,16 @@ import com.example.simplebooks.presentation.screens.home.bookslist.NonFictionBoo
 import com.example.simplebooks.presentation.screens.home.search.SearchScreen
 
 @Composable
-fun HomeScreen(navController: NavHostController ){
+fun HomeScreen(navController: NavHostController) {
 
-    Column(modifier = Modifier.fillMaxSize()
-        .windowInsetsPadding(WindowInsets.systemBars)
-        .padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .windowInsetsPadding(WindowInsets.systemBars)
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+    ) {
 
-        Text(text = "Simple Books",
+        Text(
+            text = "Bookscape",
             fontWeight = FontWeight.SemiBold,
             fontSize = 25.sp
         )
@@ -54,12 +56,6 @@ fun HomeScreen(navController: NavHostController ){
 
         NonFictionBookListItemScreen()
     }
-
-
-
-
-
-
 
 
 }

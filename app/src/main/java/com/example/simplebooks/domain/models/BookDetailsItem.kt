@@ -14,7 +14,7 @@ data class BookDetailsItem(
     @SerialName("id")
     val id: Int,
     @SerialName("isbn")
-    val isbn: String,
+    val isbn: String?,
     @SerialName("name")
     val name: String,
     @SerialName("price")
@@ -30,7 +30,7 @@ data class BookDetailsItem(
             name = this.name,
             author = this.author,
             type = this.type,
-            isbn = this.isbn,
+            isbn = this.isbn ?: "N/A",
             price = this.price,
             currentStock = this.currentStock,
             available = this.available
