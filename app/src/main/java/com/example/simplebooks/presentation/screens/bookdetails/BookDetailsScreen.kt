@@ -3,6 +3,8 @@ package com.example.simplebooks.presentation.screens.bookdetails
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -54,13 +56,16 @@ fun BookDetailsScreen(
             )
         }
     } else {
-        Column {
+        Column (modifier = Modifier) {
 
             if (bookDetListState.message.isNotEmpty()) {
-                Text(
-                    text = bookDetListState.message,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
+
+                Box( modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Text(
+                        text = bookDetListState.message,
+                        color = MaterialTheme.colorScheme.onBackground)
+                }
 
             }
             /** check if bookDetListState.bookDetails is null **/
